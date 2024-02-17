@@ -24,6 +24,30 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 
 // Your code here 
 
+function lazyAdder(firstNum) {
+  return function (secondNum) {
+    return function (thirdNum) {
+      let sum = 0
+      sum += firstNum
+      sum += secondNum
+      sum += thirdNum
+      return sum
+    }
+  }
+}
+
+// Example 1:
+let firstAdd = lazyAdder(1);
+let secondAdd = firstAdd(2);
+let sum = secondAdd(3);
+console.log(sum); // prints 6
+
+// Example 2:
+let func1 = lazyAdder(10);
+let func2 = func1(20);
+let total = func2(3);
+console.log(total); // prints 33
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {

@@ -17,6 +17,20 @@ hidden2(); // returns 1
 
 // Your code here 
 
+function hiddenCounter() {
+  let hidden = 0
+  return function (num) {
+    return hidden += 1
+  }
+}
+
+let hidden1 = hiddenCounter(); //returns a function
+hidden1(); // returns 1
+hidden1(); // returns 2
+
+let hidden2 = hiddenCounter(); // returns a function
+hidden2(); // returns 1
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {
