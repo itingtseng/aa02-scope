@@ -45,16 +45,84 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 
 // Your code here 
 
-// 1
-// const sum = curriedSum(4); // returns a function
-// sum(5) // returns a function
-// sum(20) // returns a function
-// sum(30) // returns a function
-// sum(20); // => returns 75
+function curriedSum(numArgs) {
+  let numbers = []
+  let sum = 0
+  if (numArgs <= 0) {
+    return null
+  }
+  else {
+    return function innercurriedSum(n) {
+      if (n !== undefined ){
+        numbers.push(n)
+        if (numbers.length === numArgs) {
+          for (let i = 0; i < numbers.length; i++) {
+            sum += numbers[i]
+          }
+          return sum
+        }
+        else {
+          return innercurriedSum
+        }
+      }
+      else {
+        return innercurriedSum
+      }
+    }
+  }
+}
 
-// // 2
-// // this function can also be invoked like this:
-// const sum = curriedSum(3)(2)(1)(7); // => returns 10
+// function curriedSum(...numArgs) {
+//   let numbers = []
+//   let sum = 0
+//   if (numArgs[0] <= 0) {
+//     return null
+//   }
+//   else {
+//     if (numArgs.length == 1) {
+//       return function (n) {
+//         if (n > 0) {
+//           numbers.push(n)
+//           if (numbers.length === numArgs[0]) {
+//             for (let i = 0; i < numbers.length; i++) {
+//               sum += numbers[i]
+//             }
+//             return sum
+//           }
+//           else {
+//             return function () {
+//               return curriedSum(...numArgs)
+//             }
+//           }
+//         }
+//       }
+//     }
+//     else {
+//       for (let i = 1; i < numArgs.length; i++) {
+//         numbers.push(numArgs[i])
+//         if (numbers.length === numArgs[0]) {
+//           for (let j = 0; j < numbers.length; j++) {
+//             sum += numbers[j]
+//           }
+//           return sum
+//         }
+//       }
+//     }
+//   }
+// }
+    
+
+// 1
+const sum1 = curriedSum(4); // returns a function
+console.log(sum1(5)) // returns a function
+console.log(sum1(20)) // returns a function
+console.log(sum1(30)) // returns a function
+console.log(sum1(20)); // => returns 75
+
+// 2
+// this function can also be invoked like this:
+const sum2 = curriedSum(3)(2)(1)(7); // => returns 10
+console.log(sum2)
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
