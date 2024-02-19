@@ -20,8 +20,8 @@ console.log(rudePerson2("I love dogs")); // prints "I yo love yo dogs"
 
 function interrupter(word) {
   return function (str) {
-    let res = str.split(' ')
-    return res.join(` ${word} `)
+    let arr = str.split(' ')
+    return arr.join(' '+ word + ' ')
   }
 }
 
@@ -31,6 +31,13 @@ console.log(rudePerson("I like pie")); // prints "I what like what pie"
 
 let rudePerson2 = interrupter("yo"); // => returns a function
 console.log(rudePerson2("I love dogs")); // prints "I yo love yo dogs"
+
+// function interrupter(word) {
+//   return function (str) {
+//     let res = str.split(' ')
+//     return res.join(` ${word} `)
+//   }
+// }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

@@ -45,32 +45,7 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 
 // Your code here 
 
-function curriedSum(numArgs) {
-  let numbers = []
-  let sum = 0
-  if (numArgs <= 0) {
-    return null
-  }
-  else {
-    return function innercurriedSum(n) {
-      if (n !== undefined ){
-        numbers.push(n)
-        if (numbers.length === numArgs) {
-          for (let i = 0; i < numbers.length; i++) {
-            sum += numbers[i]
-          }
-          return sum
-        }
-        else {
-          return innercurriedSum
-        }
-      }
-      else {
-        return innercurriedSum
-      }
-    }
-  }
-}
+//my won
 
 // function curriedSum(...numArgs) {
 //   let numbers = []
@@ -110,10 +85,81 @@ function curriedSum(numArgs) {
 //     }
 //   }
 // }
-// no node_modules please
-//no node_modules please
-// no node_modules please
+
+//answer
+
+// function curriedSum(numArgs) {
+//   let numbers = []
+//   let sum = 0
+//   if (numArgs <= 0) {
+//     return null
+//   }
+//   else {
+//     return function innercurriedSum(n) {
+//       if (n !== undefined ){
+//         numbers.push(n)
+//         if (numbers.length === numArgs) {
+//           for (let i = 0; i < numbers.length; i++) {
+//             sum += numbers[i]
+//           }
+//           return sum
+//         }
+//         else {
+//           return innercurriedSum
+//         }
+//       }
+//       else {
+//         return innercurriedSum
+//       }
+//     }
+//   }
+// }
     
+
+function curriedSum(numArgs) {
+  let numbers = []
+  if (numArgs <= 0) {
+    return null
+  }
+  else {
+    return function innerfunc(n) {   
+      numbers.push(n)
+      // console.log('this is length of numbers: ' + numbers.length)
+      // console.log('this is numArgs: ' + numArgs)
+      if (numArgs == numbers.length) {  
+        // console.log('this is if length of numbers: ' + numbers.length)
+        // console.log('this is if numArgs: ' + numArgs)
+        let sum = 0
+        for (let i = 0; i < numbers.length; i++){
+          sum += numbers[i]
+        }
+        console.log('this is sum: ' + sum)
+        return sum       
+      }
+      else {     
+        // console.log('this is else length of numbers: ' + numbers.length)
+        // console.log('this is else numArgs: ' + numArgs)
+        return innerfunc
+      }
+    }
+  }
+}
+
+// Here is a breakdown of how curriedSum(numArgs) should work:
+//     - Define an empty array, `numbers`.
+//     - Define a function, `_curriedSum` that:
+//         - Closes over `numArgs` and `numbers`.
+//         - Takes a single postive integer greater than 0 as an argument.
+//           - If number is less than or equal to 0 return null
+//         - Appends this to the `numbers` array each time.
+//         - If `numbers.length === numArgs`, it sums the numbers in the array and
+//         returns the result.
+//         - Else, it returns itself.
+//     - Returns `_curriedSum`.
+
+// If you're confused, think of it this way: `_curriedSum` keeps collecting
+// arguments and returning itself until it has enough arguments, at which point it
+// actually does the required work of summing.
 
 // 1
 const sum1 = curriedSum(4); // returns a function
